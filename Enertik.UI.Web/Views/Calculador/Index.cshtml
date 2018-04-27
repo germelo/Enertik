@@ -1,0 +1,26 @@
+﻿@model Enertik.UI.Web.Models.PruebaModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts{
+
+    <script type="text/javascript">
+        var prueba = "@Model.ValorPrueba"; 
+        var productos = @Html.Raw(Json.Encode(@Model.Productos));
+    </script>
+    @Scripts.Render("~/bundles/calculador")
+}
+
+<h2>Index</h2>
+
+<input type="text" data-bind="value: Prueba"/>
+<br />
+<span data-bind="text: Prueba"></span>
+
+<div data-bind="foreach: Productos">
+    <span data-bind="text: Nombre"></span> - <span data-bind="text: Descripcion"></span>
+    <br />
+</div>
+
